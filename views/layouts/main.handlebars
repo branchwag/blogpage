@@ -1,55 +1,83 @@
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Tech Blog</title>
+    <title>Tech Blog</title>
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/css/style.css" />
+
   </head>
 
-  <body class="flex-column min-100-vh">
-    <nav class="navbar custom-navbar navbar-expand-lg fixed-top">
-      <div class="container">
-        <div>
-          <a class="nav-item nav-link" href="/"><i
-              class="bi bi-house"
-            ></i>Home</a>
-          <a class="nav-item nav-link" href="/dashboard"><i
-              class="bi bi-card-list"
-            ></i>Dashboard</a>
-          {{#if loggedIn}}
-            <a class="nav-item nav-link" href="/login" id="logout"><i
-                class="bi bi-box-arrow-right"
-              ></i>Logout</a>
-          {{else}}
-            <a class="nav-item nav-link" href="/login"><i
-                class="bi bi-box-arrow-in-right"
-              ></i>Login</a>
-          {{/if}}
+  <body>
+    <div class="flex-column justify-space-around">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid navBack">
+          <a class="navbar-brand navTitle" href="/">The Tech Blog</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              {{#if logged_in}}
+
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+
+                {{! need to add css }}
+                <li class="nav-item">
+                  <button class="no-button" id="logout">Logout</button>
+                </li>
+
+              {{else}}
+                <li>
+                  <a class="nav-link" href="/login">Login</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="/signUp">Sign Up</a>
+                </li>
+              {{/if}}
+
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
-    <header class="text-center">
-      <div class="container d-flex align-items-center flex-column">
-        <h1 id="header">Welcome</h1>
-      </div>
-    </header>
+      <main class="container">
+        {{{body}}}
+      </main>
+      <footer>
+      </footer>
+    </div>
 
-    <main class="col-auto">
-      {{{body}}}
-    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
   </body>
-</html>
 
-<script src="/js/logout.js"></script>
+</html>
